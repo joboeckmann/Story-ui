@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Edit Story</h1>
+<mat-dialog-content>
+<mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
+  <mat-label>Title</mat-label>
+  <input matInput placeholder={{story.title}} required>
+</mat-form-field>
+<br>
+<mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
+  <mat-label>Genre</mat-label>
+  <mat-select placeholder={{currentGenre.type}} required>
+    <mat-option *ngFor="let genre of genres">{{genre.type}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
+  <mat-label>Description</mat-label>
+  <textarea matInput placeholder={{story.description}}></textarea>
+</mat-form-field>
+<input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button>Edit</button>
+    <button mat-button>Cancel</button>
+  </mat-dialog-actions>

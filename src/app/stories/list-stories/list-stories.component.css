@@ -1,0 +1,26 @@
+.mat-expansion-panel-header-description{
+    display: flex;
+  flex-direction: row-reverse;
+}
+
+button{
+    margin-right:5px;
+    line-height: 28px;
+}
+.row{
+    display: block;
+}
+.mat-expansion-panel-header-title{
+    color:black !important
+}
+.right{
+    float: right
+}
+
+::ng-deep mat-list-item .mat-list-item-content{
+    display: block !important;
+}
+
+::ng-deep .mat-list-item{
+    height:35px !important;
+}

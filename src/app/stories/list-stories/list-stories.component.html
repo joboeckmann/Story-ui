@@ -1,0 +1,26 @@
+<div *ngFor="let story of stories">
+  <mat-expansion-panel [disabled]="story.chapters && story.chapters.length < 1" [expanded]="story.chapters && story.chapters.length > 0">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{story.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+          <button mat-raised-button color="primary" (click)="editClicked(story)">Edit</button>
+          <button mat-raised-button color="primary">Find Partner</button>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list *ngFor="let chapter of story.chapters">
+        <mat-list-item>
+        <div class="row">
+          <span>{{chapter.title}}</span> 
+          <div class="right">
+          <button mat-raised-button color="primary" (click)="editClicked(story)">Edit</button>
+          </div>
+        </div>
+        </mat-list-item>
+          <mat-divider></mat-divider>
+      </mat-list>
+
+  </mat-expansion-panel>
+</div>
+

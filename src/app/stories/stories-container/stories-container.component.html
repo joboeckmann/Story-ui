@@ -1,0 +1,4 @@
+<h1>My Stories</h1>
+  <mat-spinner *ngIf="!stories"></mat-spinner>
+  <app-list-stories [stories]="stories" (clickEdit)="clickEdit($event);"></app-list-stories>
+

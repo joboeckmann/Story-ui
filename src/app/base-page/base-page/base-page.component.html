@@ -1,0 +1,10 @@
+<div class="sidenav">
+  <a routerLink="/stories" routerLinkActive="active">Stories</a>
+  <a routerLink="/critiques" routerLinkActive="active">Critiques</a>
+  <a routerLink="/reviews" routerLinkActive="active">Reviews</a>
+  <a routerLink="/messages" routerLinkActive="active">Messages</a>
+  <a (click)="authService.logout()" routerLink="/login" routerLinkActive="active">Logout</a>
+</div>
+<div class="main">
+  <router-outlet></router-outlet>
+</div>

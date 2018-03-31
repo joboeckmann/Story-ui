@@ -10,9 +10,7 @@ export class StoryService {
    constructor(private http: Http, private authService: AuthService) {
    }
   
- 
-   getStories(userid:number): Observable<Story[]> {
-     
+   getStories(userid:number): Observable<Story[]> { 
       return this.http.get(`/api/user/${userid}/story`,
        {  headers: new Headers({'Authorization': `Bearer ${this.authService.accessToken}`})})
         .map((res: Response) => res.json())
@@ -20,4 +18,12 @@ export class StoryService {
 
    }
 
+   updateStory(userId:number,storyId:number,story:Story ): Observable<any> { 
+   console.log('in service');
+      return this.http.put(`/api/user/${userId}/story/${storyId}`, story,
+       {  headers: new Headers({'Authorization': `Bearer ${this.authService.accessToken}`})})
+       .map((res) =>{ console.log('in service'); return Observable.of({});})
+         .catch((error: any) =>  Observable.throw( error));
+
+   }
 }

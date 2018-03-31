@@ -12,7 +12,8 @@ export class ChapterService {
    }
 
    getChapters(userId:number,storyId:number): Observable<Chapter[]> {
-        return this.http.get(`/api/user/${userId}/story/${storyId}/chapter`,  {  headers: new Headers({'Authorization': `Bearer ${this.authService.accessToken}`})})
+        return this.http.get(`/api/user/${userId}/story/${storyId}/chapter`,
+          {  headers: new Headers({'Authorization': `Bearer ${this.authService.accessToken}`})})
         .map((res: Response) => res.json())
          .catch((error: any) =>  Observable.throw( error));
 

@@ -1,2 +1,59 @@
 
+.mat-form-field {
+    display: inline;
+ 
+}
 
+.file{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.filename{
+    margin-top:20px;
+}
+.filename2{
+    margin-top:7px;
+}
+
+
+.chapterBox{
+    border-style: solid;
+    border-color: #4A148C;
+    border-width: 1px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+
+}
+.newfile{
+    margin:3px;
+}
+.fileTitle ::ng-deep .mat-input-wrapper {
+    margin-left: 7px;
+}
+    .fileButton{
+        margin-top:14px;
+    }
+.chapterContainer{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.newChapter{
+    margin:3px;
+}
+
+.fileRow{
+    border-style: solid;
+    border-color: #4A148C;
+    border-width: 1px;
+    border-radius: 3px;
+}
+:host .row{
+    margin-right:0px;
+    margin-left:0px;
+}
+
+.fileRow{
+margin:5px;
+}

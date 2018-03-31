@@ -5,11 +5,12 @@ export interface Story{
     title:string;
     numChapters:number;
     description: string;
-    triggerWarning:string;
+    triggerWarnings:string;
     userId:number;
     dateUploaded: Date;
     genreId:number;
     fileLocation: string;
     chapters?: Chapter[];
+    length:number;
 
 }

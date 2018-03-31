@@ -1,3 +1,5 @@
+
+
 .mat-expansion-panel-header-description{
     display: flex;
   flex-direction: row-reverse;
@@ -7,7 +9,7 @@ button{
     margin-right:5px;
     line-height: 28px;
 }
-.row{
+:host .row{
     display: block;
 }
 .mat-expansion-panel-header-title{
@@ -21,6 +23,7 @@ button{
     display: block !important;
 }
 
-::ng-deep .mat-list-item{
+:host  ::ng-deep .mat-list-item{
     height:35px !important;
 }
+

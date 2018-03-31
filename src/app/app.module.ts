@@ -11,7 +11,7 @@ import { UserResolver } from './core/resolver/userResolver.service';
 import { ListCritiquesComponent } from './base-page/list-critiques/list-critiques.component';
 import { ListReviewsComponent } from './base-page/list-reviews/list-reviews.component';
 import { ListMessagesComponent } from './base-page/list-messages/list-messages.component';
-import { MatExpansionModule, MatButtonModule, MatDividerModule, MatListModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule } from '@angular/material';
+import { MatExpansionModule, MatButtonModule, MatDividerModule, MatListModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule, MatStepperModule, MatToolbarModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ChapterService } from './core/services/chapter.service';
 import { StoryService } from './core/services/story.service';
@@ -21,6 +21,7 @@ import { EditStoriesComponent } from './stories/edit-stories/edit-stories.compon
 import { StoriesContainerComponent } from './stories/stories-container/stories-container.component';
 import { GeneralService } from './core/services/general.service';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import {DndModule} from 'ng2-dnd';
 
 const appRoutes: Routes = [
 
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes),
     BrowserModule,
+    DndModule.forRoot(),
     HttpModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -89,8 +91,10 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatInputModule,
     MatDialogModule,
+    MatStepperModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatToolbarModule,
     MatProgressSpinnerModule,
     MatListModule,
     LoginModule,

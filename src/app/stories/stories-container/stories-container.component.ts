@@ -17,6 +17,7 @@ export class StoriesContainerComponent implements OnInit {
 
   stories: Story[];
   genres:Genre[];
+  userId:number;
 
   
   constructor(private storyService: StoryService, 
@@ -27,10 +28,12 @@ export class StoriesContainerComponent implements OnInit {
             ) { }
 
   ngOnInit() {
-    this.generalService.getGenres().subscribe(genres=> this.genres=genres);
+ 
 
     this.authService.userId.subscribe(id =>{
       if (id){
+        this.userId = id;
+        this.generalService.getGenres().subscribe(genres=> this.genres=genres);
         this.storyService.getStories(id).subscribe(storyList=>{
           this.stories=storyList;
           for ( let story of this.stories ){
@@ -48,8 +51,17 @@ export class StoriesContainerComponent implements OnInit {
         width: '600px',
         data: { story: story, genres: this.genres }
       });
+      const sub = dialogRef.componentInstance.onEdit.subscribe((newStory:Story) => { 
+          this.storyService.updateStory(this.userId, newStory.id, newStory).take(1).subscribe(()=>{
+              dialogRef.close()
+          }
+          )
+      });
+     
 
   }
+
+
 
 
 }

@@ -1,24 +1,87 @@
-<h1 mat-dialog-title>Edit Story</h1>
-<mat-dialog-content>
-<mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
-  <mat-label>Title</mat-label>
-  <input matInput placeholder={{story.title}} required>
-</mat-form-field>
-<br>
-<mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
-  <mat-label>Genre</mat-label>
-  <mat-select placeholder={{currentGenre.type}} required>
-    <mat-option *ngFor="let genre of genres">{{genre.type}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
-<mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
-  <mat-label>Description</mat-label>
-  <textarea matInput placeholder={{story.description}}></textarea>
-</mat-form-field>
-<input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-button>Edit</button>
-    <button mat-button>Cancel</button>
-  </mat-dialog-actions>
+<mat-toolbar color=primary>
+  <span>Edit Story</span>
+</mat-toolbar>
+
+<form #heroForm="ngForm">
+
+<mat-horizontal-stepper #stepper="matHorizontalStepper">
+
+  <mat-step [completed]="false" label="Story">
+
+    <mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="story.title"  required name="title">
+    </mat-form-field>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
+          <mat-label>Genre</mat-label>
+          <mat-select  [(ngModel)]="story.genre"  required name="genre" required>
+            <mat-option *ngFor="let genre of genres">{{genre.type}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
+          <mat-label>Length</mat-label>
+          <input matInput  [(ngModel)]="story.length"  required name="length" required>
+          <span matSuffix>words</span>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
+      <mat-label>Description</mat-label>
+      <textarea matInput  [(ngModel)]="story.description"  required name="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field [hideRequiredMarker]="true" [floatLabel]="'always'">
+      <mat-label>Trigger Warning</mat-label>
+      <input matInput [(ngModel)]="story.triggerWarnings"  required name="trigger" required>
+      <mat-hint>Anything that may upset readers. For example, extreme violence</mat-hint>
+    </mat-form-field>
+
+    <div class="row fileRow">
+        <div class="filename2 col-md-8">
+          <span >{{story.fileLocation}}</span>
+        </div>
+        <div class="newfile col-md-2">
+           <button mat-raised-button color=primary>New File</button>
+          </div>
+      </div>
+
+    <button mat-raised-button color=primary matStepperNext>Next</button>
+
+  </mat-step>
+
+  <mat-step [completed]="false" label="Chapters">
+
+      <button class="newChapter" mat-raised-button color=primary>New Chapter</button>
+    <span>To reorder chapters, click and drag</span>
+
+    <div class="chapterContainer" dnd-sortable-container [sortableData]="story.chapters">
+      <div class="chapterBox" *ngFor="let chapter of story.chapters; let i=index" [sortableIndex]=i dnd-sortable>
+
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="fileTitle" [hideRequiredMarker]="true">
+              <input matInput placeholder={{chapter.title}} required>
+            </mat-form-field>
+          </div>
+          <div class="filename col-md-4">
+            <span >{{chapter.fileLocation}}</span>
+          </div>
+          <div class="col-md-2">
+             <button class="fileButton" mat-raised-button color=primary>New File</button>
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button mat-raised-button color=primary matStepperPrevious>Previous</button>
+    <button mat-raised-button mat-dialog-close color=primary>Cancel</button>
+    <button mat-raised-button (click)="OnEdit()" color=primary>Edit</button>
+  </mat-step>
+<!-- </form> -->

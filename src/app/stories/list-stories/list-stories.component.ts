@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Story } from '../../core/models/story';
+import { AuthService } from '../../core/services/auth.service';
 
 
 
@@ -13,10 +14,10 @@ export class ListStoriesComponent implements OnChanges {
   @Input() stories: Story[];
   @Output() clickEdit: EventEmitter<Story>= new EventEmitter<Story>();
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
 ngOnChanges() {
- 
+  console.log(this.authService.accessToken);
 }
 
 editClicked(story:Story){
